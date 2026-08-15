@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: după stabilirea domeniului final, înlocuiți
+     „https://www.dimaxstudio.example" cu adresa reală a site-ului. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.dimaxstudio.example/index.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.dimaxstudio.example/portofoliu.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.dimaxstudio.example/sedinte-foto.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dimaxstudio.example/despre.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.dimaxstudio.example/contact.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dimaxstudio.example/proiecte/alexandra-dumitru.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.dimaxstudio.example/proiecte/alexandrina.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.dimaxstudio.example/proiecte/ilgutza.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+</urlset>
