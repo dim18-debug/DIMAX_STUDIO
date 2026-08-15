@@ -124,15 +124,24 @@
     function pad(n) { return n < 10 ? '0' + n : String(n); }
 
     function preload(i) {
-      var img = qs('img', slides[i]);
-      if (img && img.loading === 'lazy') img.loading = 'eager';
+      qsa('img', slides[i]).forEach(function (img) {
+        if (img.dataset.srcset) { img.srcset = img.dataset.srcset; delete img.dataset.srcset; }
+        if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
+        if (img.loading === 'lazy') img.loading = 'eager';
+      });
     }
+
+    var hydrateTimer = null;
 
     function show(i) {
       slides[current].classList.remove('is-active');
       current = (i + slides.length) % slides.length;
       preload(current);
-      preload((current + 1) % slides.length);
+      /* slide-ul următor se încarcă după ce imaginea principală a avut prioritate */
+      if (hydrateTimer) window.clearTimeout(hydrateTimer);
+      hydrateTimer = window.setTimeout(function () {
+        preload((current + 1) % slides.length);
+      }, 4000);
       slides[current].classList.add('is-active');
       if (counter) counter.textContent = pad(current + 1);
       if (liveRegion) {

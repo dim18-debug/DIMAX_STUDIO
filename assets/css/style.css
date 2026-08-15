@@ -532,6 +532,14 @@ button {
   opacity: 0;
   transition: opacity 1.6s ease;
   pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: var(--white);
+}
+
+.hc-slide figure {
+  overflow: hidden;
 }
 
 .hc-slide.is-active {
@@ -627,7 +635,7 @@ button {
 .card-media {
   display: block;
   overflow: hidden;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 3 / 4;
   background: var(--paper);
 }
 
@@ -827,6 +835,15 @@ button {
   height: auto;
   display: block;
   cursor: zoom-in;
+}
+
+.g-row--solo {
+  justify-content: center;
+}
+
+.g-row--solo figure {
+  flex: 0 1 auto;
+  width: min(520px, 100%);
 }
 
 /* Navigare proiect anterior / următor */
@@ -1451,6 +1468,15 @@ button {
     min-height: 340px;
   }
 
+  .hc-slide {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hc-slide figure:nth-child(n + 2) {
+    display: none;
+  }
+
   .page-hero {
     height: 46vh;
     min-height: 300px;
@@ -1479,11 +1505,17 @@ button {
   }
 
   .g-row {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 
-  .g-row--keep {
-    flex-direction: row;
+  .g-row figure {
+    flex-basis: calc(50% - 4px);
+  }
+
+  .g-row--three figure:nth-child(3),
+  .g-row--full figure,
+  .g-row--solo figure {
+    flex-basis: 100%;
   }
 
   .form-row {
@@ -1557,4 +1589,14 @@ button {
   .lightbox {
     display: none !important;
   }
+}
+
+/* --------------------------------------------------------------------------
+   22. Fundal blur cât se încarcă fotografia
+   (la sfârșit, ca să nu fie suprascris de shorthand-urile `background`)
+   -------------------------------------------------------------------------- */
+.ph-blur {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }

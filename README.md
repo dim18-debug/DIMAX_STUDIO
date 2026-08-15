@@ -42,31 +42,26 @@ dar are nevoie de un endpoint de trimitere:
 Până la configurare, formularul afișează un mesaj politicos că trimiterea va fi
 activată în curând (fără erori tehnice).
 
-### 3. Fotografiile — cel mai important pas
+### 3. Fotografiile
 
-Repository-ul nu conține încă fotografii reale, de aceea site-ul folosește
-**placeholder-e SVG elegante** (marcate „Fotografie în pregătire”). Structura:
+Site-ul folosește **fotografiile reale** ale celor 3 proiecte încărcate
+(Alexandra & Dumitru, Alexandrina, Ilgutza), optimizate automat în WebP cu
+dimensiuni responsive și blur placeholder:
 
 ```
-assets/img/hero/                 7 fotografii pentru caruselul de pe Acasă
-assets/img/nunti/<proiect>/      cover + hero + galerie (10 fotografii) pe proiect
-assets/img/sedinte-foto/<proiect>/
-assets/img/evenimente/<proiect>/
-assets/img/nunti/hero.svg        fotografia panoramică a fiecărei categorii
-assets/img/despre/echipa.svg     fotografia echipei
-assets/img/contact/fundal.svg    fundalul paginii de contact
+originale/<proiect>/                 fotografiile originale (JPEG, neatinse)
+assets/img/sedinte-foto/<proiect>/   variantele WebP folosite de site
 ```
 
-Când fotografiile reale sunt disponibile: încărcați-le în repository (sau trimiteți-le
-în conversație) și cereți integrarea lor — vor fi optimizate în WebP/AVIF, cu
-dimensiuni responsive și alt-texte corecte, iar galeriile vor fi rearanjate după
-orientarea reală a fiecărei fotografii.
+Conform cerinței, categoriile fără conținut (Nunți, Evenimente) **nu apar în
+meniu**. Când încărcați mape noi cu proiecte (o nuntă, un botez etc.), cereți
+integrarea lor — categoriile corespunzătoare vor fi reactivate.
 
-### 4. Proiectele demonstrative
+### 4. Detalii de completat la proiecte
 
-Cele 6 proiecte („Ana + Mihai”, „Botezul Sofiei” etc.) sunt **conținut demonstrativ**
-care arată structura și designul. Înlocuiți-le cu proiecte reale (nume, locație, an,
-descrieri) odată cu fotografiile.
+- **Locația și anul** fiecărui proiect (ex. „Chișinău • 2026”) — acum cardurile
+  afișează doar tipul ședinței, pentru a nu inventa date.
+- **Fotografia echipei** pentru pagina „Despre noi” (momentan placeholder).
 
 ### 5. Domeniul site-ului
 
