@@ -19,10 +19,10 @@ window.DIMAX_CONFIG = {
   whatsapp: '',
 
   /* Link complet profil Instagram, ex: "https://www.instagram.com/dimaxstudio" */
-  instagram: '',
+  instagram: 'https://www.instagram.com/dimax_studio_',
 
   /* Link complet pagină Facebook, ex: "https://www.facebook.com/dimaxstudio" */
-  facebook: '',
+  facebook: 'https://www.facebook.com/share/1Er1J3a5bd/?mibextid=wwXIfr',
 
   /* Adresa studioului, ex: "str. Exemplu 10, Chișinău" */
   address: '',
