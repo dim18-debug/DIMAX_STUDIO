@@ -385,7 +385,12 @@
     qsa('[data-contact]').forEach(function (el) {
       var key = el.getAttribute('data-contact');
       var value = (cfg[key] || '').trim();
-      if (!value) return;
+      if (!value) {
+        /* datele necompletate nu se afișează — rândul reapare când sunt completate */
+        var row = el.closest('li');
+        if (row) row.hidden = true;
+        return;
+      }
 
       el.classList.remove('placeholder-value');
       el.textContent = friendly[key] || value;
