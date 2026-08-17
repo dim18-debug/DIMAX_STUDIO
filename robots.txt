@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
 
-# După stabilirea domeniului final, înlocuiți adresa de mai jos
-# cu adresa reală a sitemap-ului (ex. https://www.dimaxstudio.md/sitemap.xml)
-Sitemap: https://www.dimaxstudio.example/sitemap.xml
+Sitemap: https://dim18-debug.github.io/DIMAX_STUDIO/sitemap.xml
