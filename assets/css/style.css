@@ -389,6 +389,27 @@ button {
   flex-wrap: nowrap;
 }
 
+/* Comutatorul de limbă */
+.lang-switch a {
+  color: var(--gray);
+}
+
+.nav-list .lang-switch {
+  position: relative;
+  padding-left: 26px;
+}
+
+.nav-list .lang-switch::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: var(--line);
+}
+
 /* Butonul hamburger (vizibil doar pe mobil) */
 .nav-toggle {
   display: none;

@@ -8,6 +8,50 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* limba paginii + textele interfeței */
+  var LANG = document.documentElement.lang === 'ru' ? 'ru' : 'ro';
+  var STR = LANG === 'ru' ? {
+    photoOf: 'Фотография {n} из {t}',
+    lbView: 'Просмотр фотографии',
+    lbClose: 'Закрыть (Escape)',
+    lbPrev: 'Предыдущая фотография',
+    lbNext: 'Следующая фотография',
+    errName: 'Пожалуйста, укажите полное имя.',
+    errPhone: 'Пожалуйста, укажите корректный номер телефона.',
+    errEmail: 'Пожалуйста, укажите корректный e-mail.',
+    errType: 'Пожалуйста, выберите тип события.',
+    errMsg: 'Пожалуйста, расскажите немного о событии.',
+    errConsent: 'Для отправки сообщения необходимо согласие на обработку данных.',
+    stSuccess: 'Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.',
+    stInfo: 'Форма будет активирована, как только будет настроен e-mail студии. А пока вы можете связаться с нами напрямую по контактам на этой странице. Спасибо за понимание!',
+    stError: 'Не удалось отправить сообщение. Пожалуйста, попробуйте ещё раз или свяжитесь с нами напрямую.',
+    sending: 'Отправка…',
+    submit: 'Отправить сообщение',
+    shopOption: 'Заказ из Shop',
+    shopPrefix: 'Здравствуйте! Хочу заказать: ',
+    values: { 'Chișinău': 'Кишинёв' }
+  } : {
+    photoOf: 'Fotografia {n} din {t}',
+    lbView: 'Vizualizare fotografie',
+    lbClose: 'Închide (Escape)',
+    lbPrev: 'Fotografia anterioară',
+    lbNext: 'Fotografia următoare',
+    errName: 'Te rugăm să scrii numele complet.',
+    errPhone: 'Te rugăm să scrii un număr de telefon valid.',
+    errEmail: 'Te rugăm să scrii o adresă de e-mail validă.',
+    errType: 'Te rugăm să alegi tipul evenimentului.',
+    errMsg: 'Te rugăm să ne spui câteva detalii despre eveniment.',
+    errConsent: 'Pentru a trimite mesajul este necesar acordul pentru prelucrarea datelor.',
+    stSuccess: 'Mulțumim! Mesajul tău a fost trimis. Revenim cu un răspuns cât mai curând.',
+    stInfo: 'Formularul va fi activat imediat ce adresa de e-mail a studioului va fi configurată. Până atunci, ne poți contacta direct prin datele afișate pe această pagină. Îți mulțumim pentru înțelegere!',
+    stError: 'Mesajul nu a putut fi trimis în acest moment. Te rugăm să încerci din nou sau să ne contactezi direct prin telefon ori e-mail.',
+    sending: 'Se trimite…',
+    submit: 'Trimite mesajul',
+    shopOption: 'Comandă Shop',
+    shopPrefix: 'Bună! Aș dori să comand: ',
+    values: {}
+  };
+
   function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
   function qsa(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
 
@@ -145,7 +189,7 @@
       slides[current].classList.add('is-active');
       if (counter) counter.textContent = pad(current + 1);
       if (liveRegion) {
-        liveRegion.textContent = 'Fotografia ' + (current + 1) + ' din ' + slides.length;
+        liveRegion.textContent = STR.photoOf.replace('{n}', current + 1).replace('{t}', slides.length);
       }
     }
 
@@ -272,17 +316,17 @@
     lightbox.className = 'lightbox';
     lightbox.setAttribute('role', 'dialog');
     lightbox.setAttribute('aria-modal', 'true');
-    lightbox.setAttribute('aria-label', 'Vizualizare fotografie');
+    lightbox.setAttribute('aria-label', STR.lbView);
     lightbox.innerHTML =
       '<p class="lb-counter"><span data-current>01</span>&nbsp;/&nbsp;<span data-total>01</span></p>' +
       '<figure class="lb-figure"><img alt=""></figure>' +
-      '<button type="button" class="lb-btn lb-close" aria-label="Închide (Escape)">' +
+      '<button type="button" class="lb-btn lb-close" aria-label="' + STR.lbClose + '">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg>' +
       '</button>' +
-      '<button type="button" class="lb-btn lb-prev" aria-label="Fotografia anterioară">' +
+      '<button type="button" class="lb-btn lb-prev" aria-label="' + STR.lbPrev + '">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>' +
       '</button>' +
-      '<button type="button" class="lb-btn lb-next" aria-label="Fotografia următoare">' +
+      '<button type="button" class="lb-btn lb-next" aria-label="' + STR.lbNext + '">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>' +
       '</button>';
     document.body.appendChild(lightbox);
@@ -393,7 +437,7 @@
       }
 
       el.classList.remove('placeholder-value');
-      el.textContent = friendly[key] || value;
+      el.textContent = friendly[key] || STR.values[value] || value;
 
       if (el.tagName === 'A') {
         if (key === 'phone') { el.href = 'tel:' + value.replace(/[^+\d]/g, ''); }
@@ -471,23 +515,23 @@
       setError(type); setError(message); setError(consent);
 
       if (!name.value.trim() || name.value.trim().length < 3) {
-        fail(name, 'Te rugăm să scrii numele complet.');
+        fail(name, STR.errName);
       }
       var phoneDigits = phone.value.replace(/\D/g, '');
       if (!/^[+\d][\d\s().-]{5,19}$/.test(phone.value.trim()) || phoneDigits.length < 6 || phoneDigits.length > 15) {
-        fail(phone, 'Te rugăm să scrii un număr de telefon valid.');
+        fail(phone, STR.errPhone);
       }
       if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) {
-        fail(email, 'Te rugăm să scrii o adresă de e-mail validă.');
+        fail(email, STR.errEmail);
       }
       if (!type.value) {
-        fail(type, 'Te rugăm să alegi tipul evenimentului.');
+        fail(type, STR.errType);
       }
       if (!message.value.trim() || message.value.trim().length < 10) {
-        fail(message, 'Te rugăm să ne spui câteva detalii despre eveniment.');
+        fail(message, STR.errMsg);
       }
       if (!consent.checked) {
-        fail(consent, 'Pentru a trimite mesajul este necesar acordul pentru prelucrarea datelor.');
+        fail(consent, STR.errConsent);
       }
 
       if (firstInvalid) firstInvalid.focus();
@@ -510,12 +554,12 @@
       var honeypot = form.elements.website;
       var tooFast = !firstInteraction || Date.now() - firstInteraction < 2500;
       if ((honeypot && honeypot.value) || tooFast) {
-        setStatus('success', 'Mulțumim! Mesajul tău a fost trimis. Revenim cu un răspuns cât mai curând.');
+        setStatus('success', STR.stSuccess);
         return;
       }
 
       if (!cfg.formEndpoint) {
-        setStatus('info', 'Formularul va fi activat imediat ce adresa de e-mail a studioului va fi configurată. Până atunci, ne poți contacta direct prin datele afișate pe această pagină. Îți mulțumim pentru înțelegere!');
+        setStatus('info', STR.stInfo);
         return;
       }
 
@@ -523,7 +567,7 @@
       data.delete('website');
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Se trimite…';
+      submitBtn.textContent = STR.sending;
 
       fetch(cfg.formEndpoint, {
         method: 'POST',
@@ -533,14 +577,14 @@
         .then(function (res) {
           if (!res.ok) throw new Error('send-failed');
           form.reset();
-          setStatus('success', 'Mulțumim! Mesajul tău a fost trimis. Revenim cu un răspuns cât mai curând.');
+          setStatus('success', STR.stSuccess);
         })
         .catch(function () {
-          setStatus('error', 'Mesajul nu a putut fi trimis în acest moment. Te rugăm să încerci din nou sau să ne contactezi direct prin telefon ori e-mail.');
+          setStatus('error', STR.stError);
         })
         .then(function () {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Trimite mesajul';
+          submitBtn.textContent = STR.submit;
         });
     });
   }
@@ -559,7 +603,7 @@
     var tip = form.elements.tip;
     if (tip) {
       for (var i = 0; i < tip.options.length; i++) {
-        if (tip.options[i].text === 'Comandă Shop') {
+        if (tip.options[i].text === STR.shopOption) {
           tip.selectedIndex = i;
           break;
         }
@@ -568,7 +612,38 @@
 
     var mesaj = form.elements.mesaj;
     if (mesaj && !mesaj.value) {
-      mesaj.value = 'Bună! Aș dori să comand: ' + produs + '. ';
+      mesaj.value = STR.shopPrefix + produs + '. ';
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     8c. Limba: memorarea alegerii + detectare automată la prima vizită
+     ------------------------------------------------------------------ */
+  function initLang() {
+    /* clickul pe comutator memorează limba aleasă */
+    qsa('[data-lang-switch]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        try { localStorage.setItem('dimax-lang', a.getAttribute('data-lang-switch')); } catch (e) { /* mod privat */ }
+      });
+    });
+
+    /* la prima vizită: deschide site-ul în limba browserului.
+       Cine ajunge direct pe un link /ru/ rămâne acolo — linkul primit e o alegere explicită. */
+    var stored = null;
+    try { stored = localStorage.getItem('dimax-lang'); } catch (e) { /* mod privat */ }
+    if (stored) return;
+
+    if (LANG === 'ru') {
+      try { localStorage.setItem('dimax-lang', 'ru'); } catch (e) { /* mod privat */ }
+      return;
+    }
+
+    var wanted = (navigator.language || '').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'ro';
+    try { localStorage.setItem('dimax-lang', wanted); } catch (e) { /* mod privat */ }
+    if (wanted === 'ru') {
+      /* linkul relativ al comutatorului funcționează pe orice domeniu */
+      var switchLink = qs('.lang-switch a[data-lang-switch="ru"]');
+      if (switchLink) window.location.replace(switchLink.getAttribute('href'));
     }
   }
 
@@ -584,6 +659,7 @@
      Inițializare
      ------------------------------------------------------------------ */
   document.addEventListener('DOMContentLoaded', function () {
+    initLang();
     initStickyBar();
     initMobileMenu();
     initCarousel();
