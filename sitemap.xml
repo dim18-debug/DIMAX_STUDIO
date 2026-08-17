@@ -18,6 +18,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.dimaxstudio.example/shop.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.dimaxstudio.example/despre.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.7</priority>
