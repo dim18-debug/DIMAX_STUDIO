@@ -975,6 +975,79 @@ button {
 }
 
 /* --------------------------------------------------------------------------
+   12b. Pagina Shop
+   -------------------------------------------------------------------------- */
+.shop-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(64px, 8vw, 112px);
+}
+
+.shop-item {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+}
+
+.shop-item--flip .shop-media {
+  order: 2;
+}
+
+.shop-media {
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.shop-media img {
+  width: 100%;
+  height: auto;
+  transition: transform 1.4s var(--ease-out);
+}
+
+.shop-item:hover .shop-media img {
+  transform: scale(1.025);
+}
+
+.shop-title {
+  font-size: clamp(28px, 3.2vw, 40px);
+  margin-bottom: 18px;
+}
+
+.shop-copy p {
+  font-size: 16.5px;
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.shop-price {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 22px 0 28px;
+}
+
+.shop-note {
+  max-width: 560px;
+  margin: clamp(56px, 7vw, 88px) auto 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--gray);
+}
+
+@media (max-width: 900px) {
+  .shop-item {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-item--flip .shop-media {
+    order: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
    13. Pagina Despre noi
    -------------------------------------------------------------------------- */
 .about-grid {

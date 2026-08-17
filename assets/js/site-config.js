@@ -1,8 +1,8 @@
 /* ==========================================================================
    DIMAX STUDIO — configurare date de contact
    --------------------------------------------------------------------------
-   Completați valorile de mai jos. Orice câmp lăsat gol ("") va afișa în site
-   un marcaj clar „[de completat]”, fără a strica nimic.
+   Completați valorile de mai jos. Rândurile cu câmpuri lăsate goale ("")
+   sunt ascunse automat pe site și reapar imediat ce sunt completate.
 
    După completare, datele apar automat în pagina Contact, în footer
    și pe pagina Despre noi — nu trebuie modificat niciun alt fișier.
@@ -28,7 +28,7 @@ window.DIMAX_CONFIG = {
   address: '',
 
   /* Orașul și țara în care activează studioul, ex: "Chișinău, Republica Moldova" */
-  city: '',
+  city: 'Chișinău',
 
   /*
     Endpoint pentru trimiterea formularului de contact (ex. Formspree):

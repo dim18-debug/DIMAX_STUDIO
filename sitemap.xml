@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- IMPORTANT: după stabilirea domeniului final, înlocuiți
-     „https://www.dimaxstudio.example" cu adresa reală a site-ului. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.dimaxstudio.example/index.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/index.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.dimaxstudio.example/portofoliu.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/portofoliu.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.dimaxstudio.example/sedinte-foto.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/sedinte-foto.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dimaxstudio.example/despre.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/shop.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/despre.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.dimaxstudio.example/contact.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/contact.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.dimaxstudio.example/proiecte/alexandra-dumitru.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/proiecte/alexandra-dumitru.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.dimaxstudio.example/proiecte/alexandrina.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/proiecte/alexandrina.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.dimaxstudio.example/proiecte/ilgutza.html</loc>
+    <loc>https://dim18-debug.github.io/DIMAX_STUDIO/proiecte/ilgutza.html</loc>
     <lastmod>2026-08-15</lastmod>
     <priority>0.6</priority>
   </url>

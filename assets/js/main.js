@@ -385,7 +385,12 @@
     qsa('[data-contact]').forEach(function (el) {
       var key = el.getAttribute('data-contact');
       var value = (cfg[key] || '').trim();
-      if (!value) return;
+      if (!value) {
+        /* datele necompletate nu se afișează — rândul reapare când sunt completate */
+        var row = el.closest('li');
+        if (row) row.hidden = true;
+        return;
+      }
 
       el.classList.remove('placeholder-value');
       el.textContent = friendly[key] || value;
@@ -541,6 +546,33 @@
   }
 
   /* ------------------------------------------------------------------
+     8b. Precompletarea formularului pentru comenzile din Shop
+     ------------------------------------------------------------------ */
+  function initShopPrefill() {
+    var form = qs('[data-contact-form]');
+    if (!form) return;
+
+    var produs = new URLSearchParams(window.location.search).get('produs');
+    if (!produs) return;
+    produs = produs.slice(0, 80);
+
+    var tip = form.elements.tip;
+    if (tip) {
+      for (var i = 0; i < tip.options.length; i++) {
+        if (tip.options[i].text === 'Comandă Shop') {
+          tip.selectedIndex = i;
+          break;
+        }
+      }
+    }
+
+    var mesaj = form.elements.mesaj;
+    if (mesaj && !mesaj.value) {
+      mesaj.value = 'Bună! Aș dori să comand: ' + produs + '. ';
+    }
+  }
+
+  /* ------------------------------------------------------------------
      9. Anul curent în footer
      ------------------------------------------------------------------ */
   function initYear() {
@@ -560,6 +592,7 @@
     initLightbox();
     initContactData();
     initContactForm();
+    initShopPrefill();
     initYear();
   });
 })();
