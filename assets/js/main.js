@@ -9,8 +9,29 @@
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* limba paginii + textele interfeței */
-  var LANG = document.documentElement.lang === 'ru' ? 'ru' : 'ro';
-  var STR = LANG === 'ru' ? {
+  var LANG = document.documentElement.lang;
+  if (LANG !== 'ru' && LANG !== 'en') LANG = 'ro';
+  var STR = LANG === 'en' ? {
+    photoOf: 'Photograph {n} of {t}',
+    lbView: 'Photo viewer',
+    lbClose: 'Close (Escape)',
+    lbPrev: 'Previous photograph',
+    lbNext: 'Next photograph',
+    errName: 'Please enter your full name.',
+    errPhone: 'Please enter a valid phone number.',
+    errEmail: 'Please enter a valid e-mail address.',
+    errType: 'Please choose the event type.',
+    errMsg: 'Please tell us a few details about your event.',
+    errConsent: 'Sending the message requires consent to data processing.',
+    stSuccess: 'Thank you! Your message has been sent. We will get back to you as soon as possible.',
+    stInfo: 'The form will be activated as soon as the studio e-mail is configured. Until then, you can reach us directly through the contacts on this page. Thank you for understanding!',
+    stError: 'The message could not be sent right now. Please try again or contact us directly.',
+    sending: 'Sending…',
+    submit: 'Send message',
+    shopOption: 'Shop order',
+    shopPrefix: 'Hello! I would like to order: ',
+    values: {}
+  } : LANG === 'ru' ? {
     photoOf: 'Фотография {n} из {t}',
     lbView: 'Просмотр фотографии',
     lbClose: 'Закрыть (Escape)',
@@ -27,7 +48,7 @@
     stError: 'Не удалось отправить сообщение. Пожалуйста, попробуйте ещё раз или свяжитесь с нами напрямую.',
     sending: 'Отправка…',
     submit: 'Отправить сообщение',
-    shopOption: 'Заказ из Shop',
+    shopOption: 'Заказ из магазина',
     shopPrefix: 'Здравствуйте! Хочу заказать: ',
     values: { 'Chișinău': 'Кишинёв' }
   } : {
@@ -633,16 +654,19 @@
     try { stored = localStorage.getItem('dimax-lang'); } catch (e) { /* mod privat */ }
     if (stored) return;
 
-    if (LANG === 'ru') {
-      try { localStorage.setItem('dimax-lang', 'ru'); } catch (e) { /* mod privat */ }
+    if (LANG !== 'ro') {
+      try { localStorage.setItem('dimax-lang', LANG); } catch (e) { /* mod privat */ }
       return;
     }
 
-    var wanted = (navigator.language || '').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'ro';
+    var browserLang = (navigator.language || '').toLowerCase();
+    var wanted = 'ro';
+    if (browserLang.indexOf('ru') === 0) { wanted = 'ru'; }
+    else if (browserLang.indexOf('en') === 0) { wanted = 'en'; }
     try { localStorage.setItem('dimax-lang', wanted); } catch (e) { /* mod privat */ }
-    if (wanted === 'ru') {
+    if (wanted !== 'ro') {
       /* linkul relativ al comutatorului funcționează pe orice domeniu */
-      var switchLink = qs('.lang-switch a[data-lang-switch="ru"]');
+      var switchLink = qs('.lang-switch a[data-lang-switch="' + wanted + '"]');
       if (switchLink) window.location.replace(switchLink.getAttribute('href'));
     }
   }
