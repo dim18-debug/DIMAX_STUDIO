@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dim18-debug.github.io/DIMAX_STUDIO/sitemap.xml
+Sitemap: https://dimaxstudio.com/sitemap.xml
