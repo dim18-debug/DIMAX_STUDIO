@@ -579,24 +579,44 @@
         return;
       }
 
-      if (!cfg.formEndpoint) {
+      /* endpoint-ul: Formspree dacă e configurat, altfel formsubmit.co
+         pe baza adresei de e-mail din site-config.js */
+      var formEmail = (cfg.formEmail || '').trim();
+      var endpoint = (cfg.formEndpoint || '').trim() ||
+        (formEmail ? 'https://formsubmit.co/ajax/' + encodeURIComponent(formEmail) : '');
+
+      if (!endpoint) {
         setStatus('info', STR.stInfo);
         return;
       }
 
       var data = new FormData(form);
       data.delete('website');
+      if (data.get('acord')) data.set('acord', 'Da');
+
+      if (endpoint.indexOf('formsubmit.co') !== -1) {
+        data.set('_subject', 'DIMAX STUDIO — mesaj nou de la ' + form.elements.nume.value.trim());
+        data.set('_template', 'table');
+        data.set('_captcha', 'false');
+        data.set('_replyto', form.elements.email.value.trim());
+      }
 
       submitBtn.disabled = true;
       submitBtn.textContent = STR.sending;
 
-      fetch(cfg.formEndpoint, {
+      fetch(endpoint, {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
       })
         .then(function (res) {
           if (!res.ok) throw new Error('send-failed');
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function (body) {
+          if (body && (body.success === false || body.success === 'false')) {
+            throw new Error('send-failed');
+          }
           form.reset();
           setStatus('success', STR.stSuccess);
         })
