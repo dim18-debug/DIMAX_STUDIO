@@ -38,7 +38,7 @@ window.DIMAX_CONFIG = {
     formsubmit.co vă trimite un e-mail cu butonul „Activate" — apăsați-l
     o singură dată și din acel moment formularul funcționează.
   */
-  formEmail: '',
+  formEmail: 'solonaridumitru312@gmail.com',
 
   /*
     Alternativă (opțională): endpoint Formspree. Dacă e completat,
