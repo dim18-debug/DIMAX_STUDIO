@@ -50,6 +50,13 @@ body {
   overflow-x: hidden;
 }
 
+/* atributul hidden trebuie să câștige și în fața regulilor cu display propriu
+   (ex. .contact-list li are display:flex) — altfel rândurile de contact
+   necompletate, ascunse din JS, rămân vizibile */
+[hidden] {
+  display: none !important;
+}
+
 h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--serif);
