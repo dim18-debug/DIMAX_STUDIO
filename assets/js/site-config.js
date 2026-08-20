@@ -31,11 +31,22 @@ window.DIMAX_CONFIG = {
   city: 'Chișinău',
 
   /*
-    Endpoint pentru trimiterea formularului de contact (ex. Formspree):
+    ACTIVAREA FORMULARULUI DE CONTACT — varianta simplă (recomandată):
+    Scrieți mai jos adresa de e-mail pe care vreți să primiți mesajele,
+    ex: "contact@dimaxstudio.com". Trimiterea se face prin serviciul
+    gratuit formsubmit.co — nu necesită cont. La primul mesaj trimis,
+    formsubmit.co vă trimite un e-mail cu butonul „Activate" — apăsați-l
+    o singură dată și din acel moment formularul funcționează.
+  */
+  formEmail: '',
+
+  /*
+    Alternativă (opțională): endpoint Formspree. Dacă e completat,
+    are prioritate față de formEmail.
     1. Creați un formular gratuit la https://formspree.io cu e-mailul studioului.
     2. Copiați aici adresa primită, ex: "https://formspree.io/f/abcdwxyz".
-    Formularul va trimite mesajele direct pe e-mailul studioului,
-    cu protecție anti-spam inclusă (honeypot + verificare de timp).
+    Ambele variante păstrează protecția anti-spam a site-ului
+    (honeypot + verificare de timp).
   */
   formEndpoint: '',
 };
