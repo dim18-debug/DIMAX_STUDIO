@@ -1125,6 +1125,18 @@ button {
   background: var(--paper);
 }
 
+/* carusel pe pagina Despre noi — reutilizează mecanica .hc-slide,
+   dar cu un singur diptic pe slide și înălțime dată de raportul 3:2 */
+.about-carousel {
+  position: relative;
+  aspect-ratio: 3 / 2;
+}
+
+.about-carousel .hc-slide {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
 .about-copy .section-title {
   margin-bottom: 26px;
 }
